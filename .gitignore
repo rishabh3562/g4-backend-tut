@@ -1,0 +1,5 @@
+.env
+.evn.local
+node_modules
+.qodo
+.vscode
