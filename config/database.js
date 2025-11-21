@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 function connectDB() {
-    mongoose.connect("mongodb://localhost:27017/blogdb24").then(() => {
+    mongoose.connect("mongodb://localhost:27017/blogs76").then(() => {
         console.log("connected")
     }).catch((err) => {
         console.log("error", err)
