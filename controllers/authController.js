@@ -23,12 +23,19 @@ const registerHandler = async (req, res) => {
         res.json({
             success: false,
             error: err.message
-        })  
+        })
     }
     // 5
 }
 const loginHandler = (req, res) => {
-
+    //1
+    const { email, password } = req.body;
+    if(!email || !password ){
+        return res.json({
+            success:false,
+            message:"missing fields"
+        })
+    }
 }
 const logoutHandler = (req, res) => {
 
