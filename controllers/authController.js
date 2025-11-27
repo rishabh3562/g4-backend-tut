@@ -57,7 +57,19 @@ const loginHandler = async (req, res) => {
     }
 
     // jwt issue
+    let payload = { _id: user.id, role: user.role };
     let token = generateToken(payload);
+    res.json({
+        success: true,
+        token,
+        message: "user logged in successfully",
+        data: {
+            _id: user._id,
+            role: user.role,
+            name: user.name,
+            email: user.email
+        }
+    })
 }
 const logoutHandler = (req, res) => {
 
