@@ -1,3 +1,4 @@
+const { generateToken } = require("../middleware/auth");
 const User = require("../models/userModel");
 
 const registerHandler = async (req, res) => {
@@ -48,6 +49,15 @@ const loginHandler = async (req, res) => {
     //password compare
 
     const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
+        return res.json({
+            success: false,
+            message: "invalid credentials"
+        })
+    }
+
+    // jwt issue
+    let token = generateToken(payload);
 }
 const logoutHandler = (req, res) => {
 
