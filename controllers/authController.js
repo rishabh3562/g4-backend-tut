@@ -27,15 +27,27 @@ const registerHandler = async (req, res) => {
     }
     // 5
 }
-const loginHandler = (req, res) => {
+const loginHandler = async (req, res) => {
     //1
     const { email, password } = req.body;
-    if(!email || !password ){
+    if (!email || !password) {
         return res.json({
-            success:false,
-            message:"missing fields"
+            success: false,
+            message: "missing fields"
         })
     }
+
+    const user = await User.findOne({ email });
+    if (!user) {
+        return res.json({
+            success: false,
+            message: "user does not exist"
+        })
+    }
+
+    //password compare
+
+    const isMatch = await user.comparePassword(password);
 }
 const logoutHandler = (req, res) => {
 
