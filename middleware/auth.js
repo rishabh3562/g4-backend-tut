@@ -4,7 +4,7 @@ const generateToken = (payload) => {
     return token;
 }
 // Protect routes - check if user is authenticated
-exports.protect = async (req, res, next) => {
+const protect = async (req, res, next) => {
     let token;
 
     // Check for token in headers
@@ -56,4 +56,4 @@ const authorize = (...roles) => {
     };
 };
 
-module.exports = { generateToken, authorize }
+module.exports = { generateToken, authorize, protect }
